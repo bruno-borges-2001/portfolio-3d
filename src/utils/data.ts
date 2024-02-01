@@ -71,6 +71,8 @@ const waypoints: { [key: string]: IWaypoint | IMarkedWaypoint } = {
   }
 }
 
-export default {
+const data = {
   waypoints
 }
+
+export default data

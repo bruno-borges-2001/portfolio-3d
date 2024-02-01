@@ -44,7 +44,7 @@ function Cloud() {
 
   const particles = useMemo(() => {
     return new Array(PARTICLES_COUNT).fill(0).map((_, i) => <CloudParticle key={`smoke-particle-${i}`} texture={texture} />)
-  }, [])
+  }, [texture])
 
   return particles
 }
