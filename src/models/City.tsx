@@ -8,7 +8,7 @@ import { forwardRef } from "react";
 import { Group } from "three";
 
 const City = forwardRef<Group, GroupProps>((props, ref) => {
-  const { nodes, materials } = useGLTF('/_next/models/city.glb');
+  const { nodes, materials } = useGLTF('/assets/models/city.glb');
 
   return (
     <a.group {...props} ref={ref}>
