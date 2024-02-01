@@ -1,27 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --blue-rgb: 237 245 255;
+  --green-rgb: 125 161 35;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  --toastify-color-dark: rgba(0, 0, 0, 0.7);
+  --toastify-text-color-dark: white;
+  --toastify-color-progress-dark: rgb(220 38 38);
+}
+
+@layer utilities {
+  .blue-gradient_text {
+    @apply bg-gradient-to-r from-[#00c6ff] to-[#0072ff] bg-clip-text text-transparent;
+  }
+
+  .header {
+    @apply flex justify-between items-center sm:px-16 px-8 py-4 max-w-5xl mx-auto absolute top-0 bg-transparent z-10 right-0 left-0;
+  }
+
+  .annotation-enter {
+    opacity: 0;
+    animation: annotation-appear 1.1s;
+    animation-fill-mode: forwards;
+  }
+
+  .annotation-content-enter {
+    opacity: 0;
+    animation: annotation-content-appear 0.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 1.1s;
+  }
+
+  @keyframes annotation-appear {
+    0% {
+      @apply w-0 h-0;
+    }
+    10% {
+      @apply w-0 h-0 opacity-100;
+    }
+    50% {
+      @apply w-full h-0 opacity-100;
+    }
+    100% {
+      @apply w-full h-full opacity-100;
+    }
+  }
+
+  @keyframes annotation-content-appear {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
