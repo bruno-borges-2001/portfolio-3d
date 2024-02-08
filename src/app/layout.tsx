@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(workSans.className, poppins.className)}>
+      <body className={cn(workSans.className, poppins.className, "behaviour")}>
         <Providers>
           <main className='bg-slate-800'>
             <Navbar />

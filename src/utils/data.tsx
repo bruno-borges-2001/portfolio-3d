@@ -1,3 +1,4 @@
+import MathYay from "@/components/ProjectContent/MathYay"
 import { Vector3 } from "three"
 
 export interface IWaypoint {
@@ -7,6 +8,7 @@ export interface IWaypoint {
   showMarker?: false,
 
   nextState?: string
+  children?: React.ReactNode
 }
 
 export interface IMarkedWaypoint extends Omit<IWaypoint, 'showMarker'> {
@@ -18,7 +20,11 @@ export interface IMarkedWaypoint extends Omit<IWaypoint, 'showMarker'> {
   markerPosition: Vector3
 }
 
-const waypoints: { [key: string]: IWaypoint | IMarkedWaypoint } = {
+export interface IMarkedProject extends IMarkedWaypoint {
+  children: React.ReactNode
+}
+
+const waypoints: { [key: string]: IWaypoint | IMarkedWaypoint | IMarkedProject } = {
   "home": {
     position: new Vector3(0, 20, 0),
     lookAt: new Vector3(0, -100, 0),
@@ -68,6 +74,19 @@ const waypoints: { [key: string]: IWaypoint | IMarkedWaypoint } = {
     description: "Want to reach me?",
 
     markerPosition: new Vector3(-39, -52, 8),
+  },
+
+  "p1": {
+    position: new Vector3(0, -50, 0),
+    lookAt: new Vector3(0, -50, 0),
+
+    showMarker: true,
+    label: "Project: Math! Yay!",
+    description: "A Next.JS application about math!",
+
+    markerPosition: new Vector3(0, -50, 0),
+
+    children: <MathYay />
   }
 }
 

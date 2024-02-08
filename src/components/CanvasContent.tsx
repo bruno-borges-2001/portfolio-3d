@@ -21,7 +21,7 @@ const markers = Object.entries(data.waypoints)
   .map(([key, value]) => ({ ...value, id: key }))
   .filter(el => el.showMarker) as Marker[]
 
-const markerLabels = markers.map(el => el.id)
+const markerLabels = markers.filter(el => el.id.startsWith('w')).map(el => el.id)
 
 function CanvasContent({ waypoint, setWaypoint }: CanvasContentProps) {
   const { setState } = useStateContext()

@@ -48,6 +48,7 @@ function Marker({ hidden = false, isHovering, setIsHovering, label, description,
 
   const MarkerDot = () => !hidden && <Dot
     position={props.position}
+    isWaypoint={props.identifier.startsWith('w')}
     isHovering={isHovering}
     onClick={handleClick}
     onMouseIn={handlePointerIn}

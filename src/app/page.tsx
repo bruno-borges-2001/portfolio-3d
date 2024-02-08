@@ -1,6 +1,6 @@
 'use client'
 
-import { About, Contact, Projects } from "@/components/ModalContent"
+import { About, Contact, Project, Projects } from "@/components/ModalContent"
 import { Canvas } from "@react-three/fiber"
 import { Suspense, useEffect, useState } from "react"
 import CanvasContent from "../components/CanvasContent"
@@ -25,6 +25,7 @@ function Home() {
       {state === 'Contact Me' && <Contact />}
       {state === 'About' && <About />}
       {state === 'Projects' && <Projects />}
+      {waypoint.startsWith('p') && <Project>{data.waypoints[waypoint].children}</Project>}
 
       <Canvas
         className="w-full h-full bg-transparent"

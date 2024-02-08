@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import { Color, Mesh, Vector3 } from 'three'
 
 interface DotProps extends MeshProps {
+  isWaypoint: boolean
   isHovering: boolean
 
   onMouseIn: (e: ThreeEvent<PointerEvent>) => void
@@ -13,9 +14,10 @@ interface DotProps extends MeshProps {
 const originalScale = new Vector3(1, 1, 1)
 const hoveredScale = new Vector3(2, 2, 2)
 
-function Dot({ isHovering, onMouseIn, onMouseOut, ...props }: DotProps) {
+function Dot({ isHovering, isWaypoint, onMouseIn, onMouseOut, ...props }: DotProps) {
   const innerRef = useRef<Mesh>(null)
-  const { color } = useSpring({ color: isHovering ? new Color('hotpink') : new Color('red') })
+  const dotColors = isWaypoint ? ['red', 'hotpink'] : ['blue', 'lightblue']
+  const { color } = useSpring({ color: isHovering ? new Color(dotColors[1]) : new Color(dotColors[0]) })
 
   useFrame(() => {
     if (!innerRef.current) return
