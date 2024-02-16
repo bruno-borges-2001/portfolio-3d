@@ -3,7 +3,7 @@ import Providers from '@/hooks'
 import { cn } from '@/utils/style'
 import type { Metadata } from 'next'
 import { Poppins, Work_Sans } from 'next/font/google'
-import './globals.css'
+import '../globals.css'
 
 const workSans = Work_Sans({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900',] })
 const poppins = Poppins({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900',] })
@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(workSans.className, poppins.className, "behaviour")}>
+      <body className={cn(workSans.className, poppins.className, "overscroll-y-none")}>
         <Providers>
           <main className='bg-slate-800'>
             <Navbar />

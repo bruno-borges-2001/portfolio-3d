@@ -27,8 +27,18 @@ const config: Config = {
       boxShadow: {
         card: '0px 1px 2px 0px rgba(0, 0, 0, 0.05)',
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            img: { margin: 0 },
+            maxWidth: 'unset'
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography')
+  ],
 }
 export default config

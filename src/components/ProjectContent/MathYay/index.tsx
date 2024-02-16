@@ -12,7 +12,7 @@ function MathYay() {
         <div className="flex sm:flex-col items-center flex-wrap justify-between sm:items-start gap-y-2">
           <h1 className="text-5xl font-bold font-poppins">Math! Yay!</h1>
           <div className="flex gap-2 h-min">
-            <LinkPill href="https://math-yay.vercel.app" >Find it here</LinkPill>
+            <LinkPill href="https://math-yay.vercel.app">Find it here</LinkPill>
             <LinkPill href="https://github.com/bruno-borges-2001/math-yay" hideExternalIcon><GithubLogo height="100%" width="16px" /></LinkPill>
           </div>
         </div>

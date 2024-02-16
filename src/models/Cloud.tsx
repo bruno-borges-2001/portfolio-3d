@@ -1,3 +1,5 @@
+'use client'
+
 import { Euler, Vector3, useFrame, useLoader } from '@react-three/fiber'
 // @ts-expect-error ignore
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
