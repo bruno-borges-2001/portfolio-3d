@@ -13,7 +13,7 @@ interface AnnotationProps extends Omit<HtmlProps, 'onClick'> {
 
 function Annotation({ children, height, width, ...rest }: AnnotationProps) {
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
-  const annotationRef = useRef<HTMLButtonElement>(null)
+  const annotationRef = useRef<HTMLDivElement>(null)
 
   const adjustAnnotationPosition = useCallback(() => {
     if (!annotationRef.current) {
