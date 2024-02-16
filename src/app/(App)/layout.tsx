@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar'
 import Providers from '@/hooks'
 import { cn } from '@/utils/style'
+import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import { Poppins, Work_Sans } from 'next/font/google'
 import '../globals.css'
@@ -25,6 +26,7 @@ export default function RootLayout({
           <main className='bg-slate-800'>
             <Navbar />
             {children}
+            <Analytics />
           </main>
         </Providers>
       </body>
