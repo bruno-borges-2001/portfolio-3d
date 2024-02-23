@@ -21,3 +21,9 @@ export interface ITag {
   type: 'skill' | 'general'
   value: string
 }
+
+export interface ICompany {
+  name: string
+  href: string
+  image: Image
+}

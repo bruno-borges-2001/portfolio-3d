@@ -33,15 +33,15 @@ export const waypoints: { [key: string]: IWaypoint } = {
     markerPosition: new Vector3(16, -33, -46),
   },
 
-  "skills": {
-    position: new Vector3(25, -25, 0),
-    lookAt: new Vector3(55, -50, -20),
+  // "skills": {
+  //   position: new Vector3(25, -25, 0),
+  //   lookAt: new Vector3(55, -50, -20),
 
-    label: "Skills",
-    description: "What do I know? What can I work with? Find out here",
+  //   label: "Skills",
+  //   description: "What do I know? What can I work with? Find out here",
 
-    markerPosition: new Vector3(42, -35, -14),
-  },
+  //   markerPosition: new Vector3(42, -35, -14),
+  // },
 
   "contact": {
     position: new Vector3(-25, -45, 17),
@@ -51,5 +51,15 @@ export const waypoints: { [key: string]: IWaypoint } = {
     description: "Want to reach me?",
 
     markerPosition: new Vector3(-39, -52, 8),
-  }
+  },
+
+  // "test": {
+  //   position: new Vector3(0, -35, 30),
+  //   lookAt: new Vector3(-6, -45, 12),
+
+  //   label: "TEST TEST",
+  //   description: "TEST TEST",
+
+  //   markerPosition: new Vector3(-6, -40, 12),
+  // }
 }

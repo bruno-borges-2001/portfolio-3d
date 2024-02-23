@@ -16,6 +16,12 @@ export default defineType({
       type: 'string',
     }),
     {
+      name: 'company',
+      title: 'Company',
+      type: 'reference',
+      to: [{ type: 'company' }]
+    },
+    {
       title: 'Links',
       name: 'links',
       type: 'array',
@@ -32,16 +38,6 @@ export default defineType({
         }
       ]
     },
-    // defineField({
-    //   name: 'slug',
-    //   title: 'Slug',
-    //   type: 'slug',
-    //   validation: (Rule) => Rule.required(),
-    //   options: {
-    //     source: 'title',
-    //     maxLength: 96,
-    //   },
-    // }),
     defineField({
       name: 'mainImage',
       title: 'Main image',
@@ -77,7 +73,7 @@ export default defineType({
     select: {
       title: 'title',
       description: 'description',
-      media: 'mainImage'
+      media: 'mainImage.image'
     },
     prepare(selection) {
       const { description } = selection

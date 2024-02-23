@@ -8,6 +8,27 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: '400px'
+      },
+      gridTemplateAreas: {
+        'project-item-shrunk': [
+          'image title company . button'
+        ],
+        'project-item-expanded': [
+          'image title company . button',
+          'image description description description description',
+          'image . access access access'
+        ]
+      },
+      gridTemplateColumns: {
+        'project-item-shrunk': '60px 1fr auto 2rem min-content',
+        'project-item-expanded': 'auto 1fr auto 2rem min-content'
+      },
+      gridTemplateRows: {
+        'project-item-shrunk': '4rem',
+        'project-item-expanded': '4rem 3rem 3rem'
+      },
       colors: {
         gray: {
           200: '#D5DAE1',
@@ -31,6 +52,8 @@ const config: Config = {
         DEFAULT: {
           css: {
             img: { margin: 0 },
+            h3: { fontWeight: '400' },
+            h4: { fontWeight: '200' },
             maxWidth: 'unset'
           },
         },
@@ -38,7 +61,8 @@ const config: Config = {
     },
   },
   plugins: [
-    require('@tailwindcss/typography')
+    require('@tailwindcss/typography'),
+    require('@savvywombat/tailwindcss-grid-areas')
   ],
 }
 export default config

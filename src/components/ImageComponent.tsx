@@ -3,9 +3,12 @@
 /* eslint-disable jsx-a11y/alt-text */
 
 import { cn } from '@/utils/style'
+import { motion } from 'framer-motion'
 import Image, { ImageProps } from 'next/image'
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
+
+const MotionImage = motion(Image)
 
 interface ImageModalProps extends ImageProps {
   onClose: () => void
@@ -16,8 +19,8 @@ function Image_({ src, ...rest }: ImageProps) {
 
   return isSvg
     // eslint-disable-next-line @next/next/no-img-element
-    ? <img {...rest} src={src as string} />
-    : <Image src={src} {...rest} />
+    ? <motion.img layout {...rest as any} src={src as string} />
+    : <MotionImage layout {...rest as any} src={src} />
 }
 
 function ImageModal({ onClose, ...rest }: ImageModalProps) {

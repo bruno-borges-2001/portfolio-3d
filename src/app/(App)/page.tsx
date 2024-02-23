@@ -22,7 +22,7 @@ async function Home({
     <section className="w-full h-svh relative">
       {state === 'Contact Me' && <Contact />}
       {state === 'About' && <About />}
-      {state === 'Projects' && <Projects />}
+      {state === 'Projects' && <Projects projects={data} />}
 
       {
         typeof state === 'string'

@@ -4,6 +4,8 @@ export const allProjects = groq`
   *[_type=="project"]{
     title,
     description,
+    mainImage,
+    "company": company->name,
     "tags":tags[]->label,
     "position": [position.x, position.y, position.z],
     "lookAt": [lookAt.x, lookAt.y, lookAt.z],

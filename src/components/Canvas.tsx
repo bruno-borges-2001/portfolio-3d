@@ -94,6 +94,8 @@ function CanvasContent({ projectMarkers: unparsedProjectMarkers }: CanvasProps) 
           timeout: 1000,
           label: waypoint
         })
+
+        return
       default: {
         if (!waypointObj) return
 

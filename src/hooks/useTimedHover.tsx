@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function useTimedRoll<T>(
   items: T[],
-  delay = 8000,
+  delay = 4000,
   identifierFunction?: (el: T, index: number, array: T[]) => boolean
 ) {
 
@@ -20,10 +20,9 @@ export default function useTimedRoll<T>(
   }
 
   useEffect(() => {
-    if (!rolling) {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current)
-      return
-    }
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+
+    if (!rolling) return
 
     timeoutRef.current = setTimeout(roll, delay)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -43,8 +42,10 @@ export default function useTimedRoll<T>(
 
   const toggleRoll = useCallback((value: boolean) => {
     setRolling(value)
+    console.log(value, timeoutRef.current)
 
     if (!value) {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
       setCurrentItem(null)
     }
   }, [])
