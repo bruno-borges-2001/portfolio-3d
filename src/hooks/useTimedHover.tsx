@@ -42,7 +42,6 @@ export default function useTimedRoll<T>(
 
   const toggleRoll = useCallback((value: boolean) => {
     setRolling(value)
-    console.log(value, timeoutRef.current)
 
     if (!value) {
       if (timeoutRef.current) clearTimeout(timeoutRef.current)

@@ -2,6 +2,7 @@
 
 import useStateContext from "@/hooks/useStateContext"
 import { SanityProject } from "@/types/projects"
+import { SanityTag } from "@/types/tags"
 import { AnimatePresence } from "framer-motion"
 import { useMemo, useState } from "react"
 import ProjectItem from "./item"
@@ -11,7 +12,7 @@ export function RedirectToContactButton() {
   return <button onClick={() => setState('Contact Me')} className="underline hover:text-[#FAFAFA] font-normal">here</button>
 }
 
-export function ProjectList({ projects }: { projects: SanityProject[] }) {
+export function ProjectList({ projects, skills }: { projects: SanityProject[], skills: SanityTag[] }) {
   const [expandedIndex, setExpandedIndex] = useState(-1)
 
   const filterCategories = useMemo(() => {
@@ -26,17 +27,14 @@ export function ProjectList({ projects }: { projects: SanityProject[] }) {
     return { companies: Array.from(companies), skills: Array.from(skills) }
   }, [projects])
 
+  const parsedSkills = useMemo(() => {
+    return skills.reduce<{ [key: string]: SanityTag }>((prev, value) => {
+      return { ...prev, [value.label]: value }
+    }, {})
+  }, [skills])
+
   const handleExpand = (index: number) => () => {
-    //   if (expandedIndex === -1 || index === -1) {
-    //     setExpandedIndex(index)
-    //     return
-    //   }
-
     setExpandedIndex(prev => prev === index ? -1 : index)
-
-    // if (expandedIndex === index) return
-
-    // setTimeout(() => setExpandedIndex(index), 300)
   }
 
   return (
@@ -46,6 +44,7 @@ export function ProjectList({ projects }: { projects: SanityProject[] }) {
           <ProjectItem
             key={project.title + 'item'}
             project={project}
+            skills={parsedSkills}
             expanded={expandedIndex === i}
             onExpand={handleExpand(i)}
           />

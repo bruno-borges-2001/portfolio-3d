@@ -1,8 +1,12 @@
 import { SanityProject } from "@/types/projects"
+import { client } from "../../../../sanity/lib/client"
+import { allTags } from "../../../../sanity/queries/tags"
 import ModalContainer from "../ModalContainer"
 import { ProjectList, RedirectToContactButton } from "./client"
 
-function Projects({ projects }: { projects: SanityProject[] }) {
+async function Projects({ projects }: { projects: SanityProject[] }) {
+  const skills = await client.fetch(allTags)
+
   return (
     <ModalContainer>
       <section className="prose prose-invert">
@@ -12,7 +16,7 @@ function Projects({ projects }: { projects: SanityProject[] }) {
         <h4>If you like and want to help me light up this city, contact me <RedirectToContactButton />!</h4>
       </section>
 
-      <ProjectList projects={projects} />
+      <ProjectList projects={projects} skills={skills} />
     </ModalContainer>
   )
 }

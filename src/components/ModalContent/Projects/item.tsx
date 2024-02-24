@@ -1,24 +1,30 @@
 import ImageComponent from "@/components/ImageComponent"
 import useStateContext from "@/hooks/useStateContext"
 import { SanityProject } from "@/types/projects"
+import { SanityTag } from "@/types/tags"
 import { cn } from "@/utils/style"
 import { CaretDown, CaretRight } from "@phosphor-icons/react"
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion"
-import React from "react"
+import React, { useMemo } from "react"
 import { urlForImage } from "../../../../sanity/lib/image"
 
 interface ProjectItemProps {
   project: SanityProject
+  skills: { [key: string]: SanityTag }
   expanded: boolean
   onExpand: () => void
 }
 
-function ProjectItem({ project, expanded, onExpand }: ProjectItemProps) {
+function ProjectItem({ project, skills, expanded, onExpand }: ProjectItemProps) {
   const { setState } = useStateContext()
 
   const goToProject = () => {
     setState(`project:${project.title}`)
   }
+
+  const formattedSkills = useMemo(() => {
+    return project.tags.map(el => skills[el])
+  }, [project, skills])
 
   return (
     <LayoutGroup id={project.title}>
@@ -34,7 +40,7 @@ function ProjectItem({ project, expanded, onExpand }: ProjectItemProps) {
             "grid prose prose-invert prose-headings:m-0 prose-p:m-0 relative pl-2 pr-4 py-3 gap-y-2 overflow-hidden",
             expanded
               ? "grid-areas-project-item-expanded grid-cols-project-item-expanded grid-rows-project-item-expanded"
-              : "grid-areas-project-item-shrunk grid-cols-project-item-shrunk grid-rows-project-item-shrunk"
+              : "grid-areas-xs-project-item-shrunk xs:grid-areas-project-item-shrunk grid-cols-xs-project-item-shrunk xs:grid-cols-project-item-shrunk grid-rows-project-item-shrunk"
           )}
         >
           <motion.div layout key={project.title + 'container'} className="absolute inset-0 bg-slate-500 rounded-md -z-10" />
@@ -47,7 +53,7 @@ function ProjectItem({ project, expanded, onExpand }: ProjectItemProps) {
 
           <motion.div layout key={project.title + 'title'} className="grid-in-title my-auto px-4">
             <h2
-              className={cn('w-fit z-10', !expanded && 'cursor-pointer transition-colors hover:text-slate-300')}
+              className={cn('w-fit z-10 whitespace-nowrap', !expanded && 'cursor-pointer transition-colors hover:text-slate-300')}
               onClick={!expanded ? goToProject : undefined}
             >
               {project.title}
@@ -62,7 +68,7 @@ function ProjectItem({ project, expanded, onExpand }: ProjectItemProps) {
 
           {!expanded && (
             <motion.div layout key={project.title + 'company'} className="grid-in-company my-auto px-4" layoutId="company">
-              <h4>{project.company}</h4>
+              <h4 className="line-clamp-1">{project.company}</h4>
             </motion.div>
           )}
 
@@ -90,6 +96,15 @@ function ProjectItem({ project, expanded, onExpand }: ProjectItemProps) {
               >
                 {project.description}
               </motion.p>
+
+              <motion.div
+                layout key={project.title + 'skills'}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="grid-in-skills relative flex"
+              >
+
+              </motion.div>
 
               <motion.button
                 layout

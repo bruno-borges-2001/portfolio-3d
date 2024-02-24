@@ -9,20 +9,24 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
-        xs: '400px'
+        xs: '500px'
       },
       gridTemplateAreas: {
         'project-item-shrunk': [
           'image title company . button'
         ],
+        'xs-project-item-shrunk': [
+          'title company button'
+        ],
         'project-item-expanded': [
           'image title company . button',
           'image description description description description',
-          'image . access access access'
+          'image skills access access access'
         ]
       },
       gridTemplateColumns: {
         'project-item-shrunk': '60px 1fr auto 2rem min-content',
+        'xs-project-item-shrunk': '1fr auto min-content',
         'project-item-expanded': 'auto 1fr auto 2rem min-content'
       },
       gridTemplateRows: {
@@ -54,7 +58,15 @@ const config: Config = {
             img: { margin: 0 },
             h3: { fontWeight: '400' },
             h4: { fontWeight: '200' },
-            maxWidth: 'unset'
+            maxWidth: 'unset',
+            code: {
+              '&::before': {
+                content: '"" !important',
+              },
+              '&::after': {
+                content: '"" !important',
+              },
+            }
           },
         },
       },
