@@ -1,17 +1,20 @@
 import Navbar from '@/components/Navbar'
 import Providers from '@/hooks'
-import { cn } from '@/utils/style'
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
-import { Poppins, Work_Sans } from 'next/font/google'
 import '../globals.css'
-
-const workSans = Work_Sans({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900',] })
-const poppins = Poppins({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900',] })
 
 export const metadata: Metadata = {
   title: 'Bruno Borges | Front End Developer',
   description: 'This is my portfolio! Enjoy!',
+
+  openGraph: {
+    type: 'profile',
+    firstName: 'Bruno',
+    lastName: 'Borges'
+  },
+
+  keywords: ['developer', 'frontend', 'front end', 'front-end', 'full stack', 'full-stack', 'react', 'next', 'html', 'css', 'tailwind', 'javascript', 'typescript'],
 }
 
 export default function RootLayout({
@@ -21,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(workSans.className, poppins.className, "overscroll-y-none")}>
+      <body className="overscroll-y-none font-poppins">
         <Providers>
           <main className='bg-slate-800'>
             <Navbar />

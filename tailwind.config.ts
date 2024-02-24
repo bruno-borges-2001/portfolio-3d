@@ -16,22 +16,28 @@ const config: Config = {
           'image title company . button'
         ],
         'xs-project-item-shrunk': [
-          'title company button'
+          'title button'
         ],
         'project-item-expanded': [
           'image title company . button',
           'image description description description description',
-          'image skills access access access'
-        ]
+          'image . access access access'
+        ],
+        'xs-project-item-expanded': [
+          'title button',
+          'description description',
+          'access access'
+        ],
       },
       gridTemplateColumns: {
         'project-item-shrunk': '60px 1fr auto 2rem min-content',
-        'xs-project-item-shrunk': '1fr auto min-content',
-        'project-item-expanded': 'auto 1fr auto 2rem min-content'
+        'project-item-expanded': 'auto 1fr auto 2rem min-content',
+        'xs-project-item-shrunk': 'minmax(132px, 1fr) min-content',
       },
       gridTemplateRows: {
         'project-item-shrunk': '4rem',
-        'project-item-expanded': '4rem 3rem 3rem'
+        'project-item-expanded': '4rem 3rem 3rem',
+        'xs-project-item-expanded': '4rem 5rem 3rem'
       },
       colors: {
         gray: {

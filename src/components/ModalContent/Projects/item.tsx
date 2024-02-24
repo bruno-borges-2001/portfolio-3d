@@ -1,4 +1,5 @@
 import ImageComponent from "@/components/ImageComponent"
+import useBreakpoint from "@/hooks/useBreakpoint"
 import useStateContext from "@/hooks/useStateContext"
 import { SanityProject } from "@/types/projects"
 import { SanityTag } from "@/types/tags"
@@ -17,6 +18,7 @@ interface ProjectItemProps {
 
 function ProjectItem({ project, skills, expanded, onExpand }: ProjectItemProps) {
   const { setState } = useStateContext()
+  const breakpoint = useBreakpoint()
 
   const goToProject = () => {
     setState(`project:${project.title}`)
@@ -33,13 +35,13 @@ function ProjectItem({ project, skills, expanded, onExpand }: ProjectItemProps) 
           layout
           layoutRoot
           initial={{ height: 88, scale: 0 }}
-          animate={{ height: expanded ? 200 : 88, scale: 1 }}
+          animate={{ height: expanded ? breakpoint === 'xs' ? 232 : 200 : 88, scale: 1 }}
           exit={{ height: 88, opacity: 0, scale: 0 }}
           key={project.title}
           className={cn(
             "grid prose prose-invert prose-headings:m-0 prose-p:m-0 relative pl-2 pr-4 py-3 gap-y-2 overflow-hidden",
             expanded
-              ? "grid-areas-project-item-expanded grid-cols-project-item-expanded grid-rows-project-item-expanded"
+              ? "grid-areas-xs-project-item-expanded xs:grid-areas-project-item-expanded grid-cols-xs-project-item-shrunk xs:grid-cols-project-item-expanded grid-rows-xs-project-item-expanded xs:grid-rows-project-item-expanded"
               : "grid-areas-xs-project-item-shrunk xs:grid-areas-project-item-shrunk grid-cols-xs-project-item-shrunk xs:grid-cols-project-item-shrunk grid-rows-project-item-shrunk"
           )}
         >
@@ -53,7 +55,7 @@ function ProjectItem({ project, skills, expanded, onExpand }: ProjectItemProps) 
 
           <motion.div layout key={project.title + 'title'} className="grid-in-title my-auto px-4">
             <h2
-              className={cn('w-fit z-10 whitespace-nowrap', !expanded && 'cursor-pointer transition-colors hover:text-slate-300')}
+              className={cn('w-fit max-w-full z-10 whitespace-nowrap overflow-hidden block text-ellipsis', !expanded && 'cursor-pointer transition-colors hover:text-slate-300')}
               onClick={!expanded ? goToProject : undefined}
             >
               {project.title}
@@ -67,7 +69,7 @@ function ProjectItem({ project, skills, expanded, onExpand }: ProjectItemProps) 
           </motion.div>
 
           {!expanded && (
-            <motion.div layout key={project.title + 'company'} className="grid-in-company my-auto px-4" layoutId="company">
+            <motion.div layout key={project.title + 'company'} className="grid-in-company my-auto px-4 hidden xs:block" layoutId="company">
               <h4 className="line-clamp-1">{project.company}</h4>
             </motion.div>
           )}
@@ -87,15 +89,15 @@ function ProjectItem({ project, skills, expanded, onExpand }: ProjectItemProps) 
 
           {expanded && (
             <React.Fragment key={project.title + 'expanded'}>
-              <motion.p
+              <motion.div
                 layout
                 key={project.title + 'description'}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="grid-in-description px-4 line-clamp-2 leading-5"
+                className="grid-in-description px-4 leading-5 overflow-auto"
               >
-                {project.description}
-              </motion.p>
+                <p>{project.description}</p>
+              </motion.div>
 
               <motion.div
                 layout key={project.title + 'skills'}
@@ -115,7 +117,7 @@ function ProjectItem({ project, skills, expanded, onExpand }: ProjectItemProps) 
                 className="grid-in-access bg-red-600 hover:bg-red-500 transition-colors font-bold rounded-lg flex gap-3 items-center justify-center px-3"
                 onClick={goToProject}
               >
-                <p className="hidden md:block">Go to Project</p>
+                <p>Go to Project</p>
                 <CaretRight />
               </motion.button>
             </React.Fragment>
