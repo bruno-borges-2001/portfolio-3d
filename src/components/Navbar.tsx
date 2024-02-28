@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import useStateContext from '../hooks/useStateContext'
 
 function Navbar() {
@@ -7,8 +8,8 @@ function Navbar() {
 
   return (
     <header className='header'>
-      <button onClick={() => setState(null)} className="w-10 h-10 rounded-lg bg-slate-500/80 items-center justify-center flex font-bold shadow-md cursor-pointer">
-        <p className="blue-gradient_text">BB</p>
+      <button onClick={() => setState(null)} className="w-10 h-10 rounded-lg bg-slate-500/80 items-center justify-center flex font-bold shadow-md cursor-pointer overflow-hidden">
+        <Image src="/assets/images/logo.png" alt='bruno borges logo' width={40} height={40} />
       </button>
 
       <nav className='flex text-lg gap-7 font-medium'>

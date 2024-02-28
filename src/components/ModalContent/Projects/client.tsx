@@ -4,7 +4,7 @@ import useStateContext from "@/hooks/useStateContext"
 import { SanityProject } from "@/types/projects"
 import { SanityTag } from "@/types/tags"
 import { AnimatePresence } from "framer-motion"
-import { useMemo, useState } from "react"
+import { useState } from "react"
 import ProjectItem from "./item"
 
 export function RedirectToContactButton() {
@@ -15,23 +15,23 @@ export function RedirectToContactButton() {
 export function ProjectList({ projects, skills }: { projects: SanityProject[], skills: SanityTag[] }) {
   const [expandedIndex, setExpandedIndex] = useState(-1)
 
-  const filterCategories = useMemo(() => {
-    const companies = new Set<string>()
-    const skills = new Set<string>()
+  // const filterCategories = useMemo(() => {
+  //   const companies = new Set<string>()
+  //   const skills = new Set<string>()
 
-    projects.forEach(el => {
-      companies.add(el.company)
-      el.tags.map(tag => skills.add(tag))
-    })
+  //   projects.forEach(el => {
+  //     companies.add(el.company)
+  //     el.tags.map(tag => skills.add(tag))
+  //   })
 
-    return { companies: Array.from(companies), skills: Array.from(skills) }
-  }, [projects])
+  //   return { companies: Array.from(companies), skills: Array.from(skills) }
+  // }, [projects])
 
-  const parsedSkills = useMemo(() => {
-    return skills.reduce<{ [key: string]: SanityTag }>((prev, value) => {
-      return { ...prev, [value.label]: value }
-    }, {})
-  }, [skills])
+  // const parsedSkills = useMemo(() => {
+  //   return skills.reduce<{ [key: string]: SanityTag }>((prev, value) => {
+  //     return { ...prev, [value.label]: value }
+  //   }, {})
+  // }, [skills])
 
   const handleExpand = (index: number) => () => {
     setExpandedIndex(prev => prev === index ? -1 : index)
@@ -44,7 +44,7 @@ export function ProjectList({ projects, skills }: { projects: SanityProject[], s
           <ProjectItem
             key={project.title + 'item'}
             project={project}
-            skills={parsedSkills}
+            // skills={parsedSkills}
             expanded={expandedIndex === i}
             onExpand={handleExpand(i)}
           />

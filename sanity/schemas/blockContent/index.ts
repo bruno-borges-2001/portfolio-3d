@@ -1,5 +1,5 @@
 import { defineType } from 'sanity'
-import { Block, Image, ImageListBlock, TextImageBlock } from './layouts'
+import { Block, Image, ImageListBlock, SkillList, TextImageBlock } from './layouts'
 
 /**
  * This is the schema definition for the rich text fields used for
@@ -19,6 +19,7 @@ export default defineType({
     Block,
     Image,
     TextImageBlock,
-    ImageListBlock
+    ImageListBlock,
+    SkillList
   ],
 })

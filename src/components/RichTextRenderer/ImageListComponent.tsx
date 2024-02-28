@@ -12,9 +12,6 @@ function ImageListComponent(props: { value: { images: IAsset[] } }) {
           src={image}
           key={image}
           alt={el.alt}
-          width={0}
-          height={0}
-          sizes="100vw"
           style={{ height: '100%', width: 'auto', maxHeight: 250 }}
           priority
         />

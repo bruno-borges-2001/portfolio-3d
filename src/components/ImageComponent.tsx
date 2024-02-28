@@ -20,7 +20,7 @@ function Image_({ src, ...rest }: ImageProps) {
   return isSvg
     // eslint-disable-next-line @next/next/no-img-element
     ? <motion.img layout {...rest as any} src={src as string} />
-    : <MotionImage layout {...rest as any} src={src} />
+    : <MotionImage layout {...rest as any} width={0} height={0} sizes='100vw' src={src} />
 }
 
 function ImageModal({ onClose, ...rest }: ImageModalProps) {

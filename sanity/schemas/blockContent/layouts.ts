@@ -86,3 +86,18 @@ export const ImageListBlock = defineArrayMember({
     },
   ]
 })
+
+export const SkillList = defineArrayMember({
+  title: 'SkillList',
+  name: 'skillList',
+  type: 'object',
+  fields: [
+    {
+      title: 'Skills',
+      name: 'skills',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'tag' }] }]
+    }
+  ]
+
+})

@@ -2,31 +2,25 @@ import ImageComponent from "@/components/ImageComponent"
 import useBreakpoint from "@/hooks/useBreakpoint"
 import useStateContext from "@/hooks/useStateContext"
 import { SanityProject } from "@/types/projects"
-import { SanityTag } from "@/types/tags"
 import { cn } from "@/utils/style"
 import { CaretDown, CaretRight } from "@phosphor-icons/react"
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion"
-import React, { useMemo } from "react"
+import React from "react"
 import { urlForImage } from "../../../../sanity/lib/image"
 
 interface ProjectItemProps {
   project: SanityProject
-  skills: { [key: string]: SanityTag }
   expanded: boolean
   onExpand: () => void
 }
 
-function ProjectItem({ project, skills, expanded, onExpand }: ProjectItemProps) {
+function ProjectItem({ project, expanded, onExpand }: ProjectItemProps) {
   const { setState } = useStateContext()
   const breakpoint = useBreakpoint()
 
   const goToProject = () => {
     setState(`project:${project.title}`)
   }
-
-  const formattedSkills = useMemo(() => {
-    return project.tags.map(el => skills[el])
-  }, [project, skills])
 
   return (
     <LayoutGroup id={project.title}>

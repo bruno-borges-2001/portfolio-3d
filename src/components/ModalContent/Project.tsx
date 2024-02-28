@@ -29,9 +29,6 @@ async function Project({ state }: { state: string }) {
           <ImageComponent
             src={mainImage}
             alt={data.mainImage.alt}
-            width={0}
-            height={0}
-            sizes="100vw"
             style={{ height: '100%', width: '100%', maxHeight: 250 }}
           />
         </div>

@@ -54,12 +54,12 @@ export const waypoints: { [key: string]: IWaypoint } = {
   },
 
   // "test": {
-  //   position: new Vector3(25, -35, -5),
-  //   lookAt: new Vector3(45, -50, -15),
+  //   position: new Vector3(-55, -30, -53),
+  //   lookAt: new Vector3(-70, -40, -53),
 
   //   label: "TEST TEST",
   //   description: "TEST TEST",
 
-  //   markerPosition: new Vector3(45, -37, -15),
+  //   markerPosition: new Vector3(-70, -31, -53),
   // }
 }

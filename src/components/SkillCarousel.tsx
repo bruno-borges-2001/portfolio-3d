@@ -10,9 +10,9 @@ import { urlForImage } from '../../sanity/lib/image';
 
 type Item = { icon: ImageType, label: string }
 
-export default function SkillCarousel({ skills }: { skills: Item[] }) {
+export default function SkillCarousel({ skills, startsExpanded = false }: { skills: Item[], startsExpanded?: boolean }) {
   const prefersReducedMotion = useReducedMotion()
-  const [expanded, setExpanded] = useState(prefersReducedMotion)
+  const [expanded, setExpanded] = useState(prefersReducedMotion || startsExpanded)
   const [cooldown, setCooldown] = useState(false)
 
   useEffect(() => {
@@ -26,13 +26,13 @@ export default function SkillCarousel({ skills }: { skills: Item[] }) {
   }, [prefersReducedMotion])
 
   const CarouselItems = useCallback(
-    ({ prefix }: { prefix: string }) => skills.map(el => <CarouselItem key={prefix + el.label} {...el} setLayoutId={['expanded', 'a1'].includes(prefix)} />),
+    ({ prefix }: { prefix: string }) => skills?.map(el => <CarouselItem key={prefix + el.label} {...el} setLayoutId={['expanded', 'a1'].includes(prefix)} /> ?? []),
     [skills]
   )
 
-  return (
+  return skills?.length > 0 && (
     <section className={cn("relative mb-3 py-3 carousel-container", prefersReducedMotion || cooldown ? 'pointer-events-none' : 'group')} onClick={() => setExpanded(!expanded)}>
-      <div className="flex overflow-hidden justify-start w-full">
+      <div className={cn("flex overflow-hidden justify-start w-full", !expanded && "overflow-gradient")}>
         <AnimatePresence>
           {expanded ? (
             <div className='flex flex-wrap gap-4 gap-y-2 justify-center'>
