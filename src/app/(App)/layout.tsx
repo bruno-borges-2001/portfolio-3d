@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   title: 'Bruno Borges | Front End Developer',
   description: 'This is my portfolio! Enjoy!',
 
+  metadataBase: new URL(process.env.NEXT_PUBLIC_METABASE ?? ''),
+
   openGraph: {
     type: 'profile',
     firstName: 'Bruno',
