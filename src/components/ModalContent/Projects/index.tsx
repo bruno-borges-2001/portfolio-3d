@@ -1,11 +1,12 @@
 import { SanityProject } from "@/types/projects"
+import { SanityTag } from "@/types/tags"
 import { client } from "../../../../sanity/lib/client"
 import { allTags } from "../../../../sanity/queries/tags"
 import ModalContainer from "../ModalContainer"
 import { ProjectList, RedirectToContactButton } from "./client"
 
 async function Projects({ projects }: { projects: SanityProject[] }) {
-  const skills = await client.fetch(allTags)
+  const skills = await client.fetch<SanityTag[]>(allTags)
 
   return (
     <ModalContainer>

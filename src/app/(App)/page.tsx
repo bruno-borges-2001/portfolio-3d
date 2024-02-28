@@ -10,11 +10,7 @@ async function Home({
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const data = await client.fetch<SanityProject[]>(
-    allProjects,
-    // @ts-expect-error
-    { next: { revalidate: 0 } }
-  )
+  const data = await client.fetch<SanityProject[]>(allProjects)
 
   const state = searchParams?.['m'] ?? 'home'
 
