@@ -16,7 +16,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'profile',
     firstName: 'Bruno',
-    lastName: 'Borges'
+    lastName: 'Borges',
+    images: {
+      url: '/assets/images/logo.png',
+    }
   },
 
   keywords: ['developer', 'frontend', 'front end', 'front-end', 'full stack', 'full-stack', 'react', 'next', 'html', 'css', 'tailwind', 'javascript', 'typescript'],
