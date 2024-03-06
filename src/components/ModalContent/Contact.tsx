@@ -1,7 +1,7 @@
 'use client'
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react';
+import { FileText, GithubLogo, LinkedinLogo } from '@phosphor-icons/react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
@@ -47,6 +47,7 @@ function Contact() {
         <div className='flex gap-3 min-h-12'>
           <Link
             href="https://www.linkedin.com/in/bruno-borges-133564196/"
+            target='_blank'
             className="bg-red-700 hover:bg-red-600 transition-all text-white h-12 w-12 overflow-hidden rounded-full grid place-items-center cursor-pointer"
           >
             <LinkedinLogo size={32} />
@@ -54,9 +55,18 @@ function Contact() {
 
           <Link
             href="https://github.com/bruno-borges-2001"
+            target='_blank'
             className="bg-red-700 hover:bg-red-600 transition-colors text-white h-12 w-12 aspect-square rounded-full grid place-items-center cursor-pointer"
           >
             <GithubLogo size={32} />
+          </Link>
+
+          <Link
+            href="https://drive.google.com/file/d/1cXp1yhRIdbWC-MgD0MpiYMoGg4cRVOBN/view?usp=sharing"
+            target='_blank'
+            className="bg-red-700 hover:bg-red-600 transition-colors text-white h-12 w-12 aspect-square rounded-full grid place-items-center cursor-pointer"
+          >
+            <FileText size={32} />
           </Link>
         </div>
       </div>
