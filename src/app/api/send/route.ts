@@ -10,8 +10,8 @@ export async function POST(req: NextRequest) {
       port: 465,
       host: "smtp.gmail.com",
       auth: {
-        user: process.env.NEXT_PUBLIC_MAIL_USERNAME,
-        pass: process.env.NEXT_PUBLIC_MAIL_PASSWORD,
+        user: process.env.MAIL_USERNAME,
+        pass: process.env.MAIL_PASSWORD,
       },
       secure: true,
     })
