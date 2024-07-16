@@ -11,9 +11,8 @@ For me, coding something from scratch and being able to see the finished product
 ## About the project
 
 This SPA was developed using Next.JS as the framework (with Typescript) and TailwindCSS as the styling library.
+Alongside with tailwind, the main focus of this project is showcase my abilities using Three.JS.
 
 All the content is managed using Sanity CMS.
 
 The deployed application is completely managed by Vercel and it is rebuilt with every commit in a CI/CD strategy.
-
-In the page's footer you can find all informations about my socials and email and access my CV
